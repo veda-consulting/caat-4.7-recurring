@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/contact/view/contributionrecurtab</path>
+    <title>Recurring Contributions</title>
+    <page_callback>CRM_Contribute_Page_ContributionRecurTab</page_callback>
+    <weight>2</weight>
+  </item>
+  <item>
+    <path>civicrm/contributionrecur/add</path>
+    <page_callback>CRM_Contribute_Form_ContributionRecur</page_callback>
+    <access_arguments>access CiviContribute</access_arguments>
+    <component>CiviContribute</component>
+  </item>
+</menu>

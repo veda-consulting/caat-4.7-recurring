@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<extension key="uk.co.vedaconsulting.module.recurringcontributioncustomsearches" type="module">
+  <file>recurringcontributioncustomsearches</file>
+  <name>Recurring Contribution Custom Searches</name>
+  <description>Custom Searches based on Recurring Contributions.</description>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>Veda NFP Consulting Ltd</author>
+    <email>support@vedaconsulting.co.uk</email>
+  </maintainer>
+  <urls>
+    <url desc="Main Extension Page">http://FIXME</url>
+    <url desc="Documentation">http://FIXME</url>
+    <url desc="Support">http://FIXME</url>
+    <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
+  </urls>
+  <releaseDate>2015-04-20</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>4.2</ver>
+  </compatibility>
+  <comments>This extension is developed by Veda NFP Consulting Ltd.</comments>
+  <civix>
+    <namespace>CRM/Recurringcontributioncustomsearches</namespace>
+  </civix>
+</extension>
