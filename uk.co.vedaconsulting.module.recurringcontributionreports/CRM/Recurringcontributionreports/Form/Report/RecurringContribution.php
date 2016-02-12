@@ -326,7 +326,7 @@ class CRM_Recurringcontributionreports_Form_Report_RecurringContribution extends
       if (!empty($startDateTo)) {
         $activeSql .= " AND start_date <= '{$startDateTo}'";
         $activeSql .= " AND (end_date >= '{$startDateTo}' OR end_date IS NULL)";
-				$activeSql .= " AND (cancel_date >= '{$startDateTo}' OR cancel_date IS NULL)";
+				$activeSql .= " AND (cancel_date > '{$startDateTo}' OR cancel_date IS NULL)";// http://support.vedaconsulting.co.uk/issues/701
       }
 			
       $activeDao = CRM_Core_DAO::executeQuery($activeSql);
