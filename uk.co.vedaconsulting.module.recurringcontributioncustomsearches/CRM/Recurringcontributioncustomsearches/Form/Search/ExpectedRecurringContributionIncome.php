@@ -20,6 +20,10 @@ class CRM_Recurringcontributioncustomsearches_Form_Search_ExpectedRecurringContr
       $query = "DROP TABLE {$this->tableName}";
       CRM_Core_DAO::executeQuery($query);
     } 
+    //KJ 15/02 As initial search form does not have start date or end date, it throws db error as we are using in query,http://support.vedaconsulting.co.uk/issues/74
+    if (empty($startDate) || empty($endDate)) {
+      return;
+    }
 
     $query = "
       SELECT 

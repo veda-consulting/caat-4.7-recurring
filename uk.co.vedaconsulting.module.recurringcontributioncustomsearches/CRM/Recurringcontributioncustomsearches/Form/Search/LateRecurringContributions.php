@@ -298,6 +298,9 @@ INNER JOIN {$this->tableName} contrib_recur ON contrib_recur.contact_id = contac
 
     
     $startDate = CRM_Utils_Date::processDate($this->_formValues['start_date']);
+    if (empty($startDate)) {
+      $startDate = date("Ymd");
+    }
     if ($startDate) {
       $clauses[] = "contrib_recur.expected_date <= $startDate";
     }
