@@ -13,8 +13,8 @@ class CRM_Recurringcontributioncustomsearches_Form_Search_ExpectedRecurringContr
    */
   public function __construct(&$formValues) {
     $this->_formValues = $formValues;
-    $startDate = CRM_Utils_Date::processDate($this->_formValues['start_date']);
-    $endDate = CRM_Utils_Date::processDate($this->_formValues['end_date'], '235959');
+    $startDate  = isset($this->_formValues['start_date']) ? CRM_Utils_Date::processDate($this->_formValues['start_date']) : 'NULL';
+    $endDate    = isset($this->_formValues['end_date']) ? CRM_Utils_Date::processDate($this->_formValues['end_date'], '235959') : 'NULL';
     $this->tableName = 'veda_temp_custom_expected_recurring_search';
     if(CRM_Core_DAO::checkTableExists($this->tableName)) {
       $query = "DROP TABLE {$this->tableName}";

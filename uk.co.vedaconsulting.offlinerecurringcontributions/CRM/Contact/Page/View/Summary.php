@@ -334,8 +334,8 @@ class CRM_Contact_Page_View_Summary extends CRM_Contact_Page_View {
         'id' => 'contribute-recur',
         'url' => CRM_Utils_System::url("civicrm/contact/view/contributionrecurtab", $q),
         'title' => ts('Recurring Contributions'),
-        'weight' => 21,
-        'count' => CRM_Contact_BAO_Contact::getCountComponent('contributionrecur', $this->_contactId),
+        'weight' => 21, 
+        'count' => CRM_Contribute_BAO_ContributionRecur::contributionRecurCount($this->_contactId),
         'class' => 'livePage',
       );
     }
