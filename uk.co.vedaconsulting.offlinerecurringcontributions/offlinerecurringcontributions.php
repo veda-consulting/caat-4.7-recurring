@@ -162,7 +162,6 @@ function civicrm_api3_job_process_offline_recurring_payments($params) {
       INNER JOIN civicrm_payment_processor_type cppt ON cppt.id = cpp.payment_processor_type_id
       WHERE cppt.name = 'Manual'
       AND (ccr.end_date IS NULL OR ccr.end_date > NOW())
-      AND ccr.next_sched_contribution_date >= %1 
       AND ccr.next_sched_contribution_date <= %2
   ";
 

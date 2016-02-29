@@ -1,7 +1,7 @@
 <?php
 /*
  +--------------------------------------------------------------------+
- | CiviCRM version 4.6                                                |
+ | CiviCRM version 4.7                                                |
  +--------------------------------------------------------------------+
  | Copyright CiviCRM LLC (c) 2004-2015                                |
  +--------------------------------------------------------------------+
@@ -32,7 +32,7 @@
  * $Id$
  *
  */
-class CRM_Recurringcontributionreports_Form_Report_RecurringContribution extends CRM_Report_Form {
+class CRM_Report_Form_Contribute_RecurSummary extends CRM_Report_Form {
   /**
    */
   public function __construct() {

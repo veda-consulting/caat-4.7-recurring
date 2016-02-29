@@ -77,14 +77,31 @@ class CRM_Recurringcontributioncustomsearches_Form_Search_LateRecurringContribut
       	//http://support.vedaconsulting.co.uk/issues/700
       	//please can you allow for a margin of error: An expected payment should count as being paid if it was received in the seven days before the expected date.
 				$nofoMonths = 0;
-				if (!empty($this->_formValues['start_date'])) {
-					$beforeDate = CRM_Utils_Date::processDate($this->_formValues['start_date']);
-					$nofoMonths = (int)abs((strtotime($beforeDate) - strtotime($expectedDate))/(60*60*24*30));
-				}
+				//if (!empty($this->_formValues['start_date'])) {
+					//$beforeDate = CRM_Utils_Date::processDate($this->_formValues['start_date']);
+					//$nofoMonths = (int)abs((strtotime($lastReceiveDate) - strtotime($expectedDate))/(60*60*24*30));
+				//}
 				
-				if ($nofoMonths > 0) {
+				if ((date("Y-m-d", strtotime($lastReceiveDate)) <= date("Y-m-d", strtotime($expectedDate))) &&
+							(date("Y-m-d", strtotime($lastReceiveDate)) >= date("Y-m-d", strtotime ( '-7 day' . $expectedDate )))
+							) {
+							$newexpectedDate  = CRM_Utils_Date::processDate($expectedDate);
+							$ModifiedDate = array();
+							$ModifiedDate[0] = date('y', strtotime(date("Y-m-d", strtotime($newexpectedDate)) . " +".$dao->frequency_interval." month"));
+							$ModifiedDate[1] = date("m",strtotime(date("Y-m-d", strtotime($newexpectedDate)) . " +".$dao->frequency_interval." month"));
+							$ModifiedDate[2] = date("d", strtotime($newexpectedDate));
+							$newExpectedDate	 = implode('-',$ModifiedDate);
+							// Calculate expected date from last payment
+							$updatedExpectedDate	 = date("Y-m-d H:i:s", strtotime($newExpectedDate)); 
+							
+							$recurringId = $dao->id;
+							$updateQuery = "UPDATE `civicrm_temp_custom_late_recurring_search` SET expected_date = '{$updatedExpectedDate}' WHERE id = {$recurringId}";      
+							CRM_Core_DAO::executeQuery($updateQuery);
+				}				
+				
+				/*if ($nofoMonths > 0) {
 					
-					if (empty($dao->next_sched_contribution_date)) {
+					if (!empty($dao->next_sched_contribution_date)) {
 						$newexpectedDate  = CRM_Utils_Date::processDate($expectedDate);
 						$ModifiedDate = array();
 						$ModifiedDate[0] = date('y', strtotime(date("Y-m-d", strtotime($newexpectedDate)) . " +".$dao->frequency_interval." month"));
@@ -109,7 +126,7 @@ class CRM_Recurringcontributioncustomsearches_Form_Search_LateRecurringContribut
 						CRM_Core_DAO::executeQuery($deleteQuery);
 					}
 				
-				}
+				}*/
 				
       }
 	
